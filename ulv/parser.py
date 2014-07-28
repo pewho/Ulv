@@ -29,4 +29,33 @@ class Importer:
 
 
 class Exporter:
-    pass
+    def __init__(self, filename, header, delimiter=',', quotechar='"', encoding='utf-8'):
+        self.filename = filename
+        self.header = header
+        self.quotechar = quotechar
+        self.delimiter = delimiter
+        self.encoding = encoding
+        with open(self.filename, 'w') as fwrite:
+            writer = csv.DictWriter(fwrite, self.header,
+                                    delimiter=self.delimiter,
+                                    quotechar=self.quotechar,
+                                    quoting=csv.QUOTE_ALL)
+            writer.writeheader()
+
+    def write_row(self, row):
+        with open(self.filename, 'a') as fwrite:
+            writer = csv.DictWriter(fwrite,
+                                    self.header,
+                                    delimiter=self.delimiter,
+                                    quotechar=self.quotechar,
+                                    quoting=csv.QUOTE_ALL)
+            writer.writerow(row)
+
+    def write_rows(self, rows):
+        with open(self.filename, 'a') as fwrite:
+            writer = csv.DictWriter(fwrite,
+                                    self.header,
+                                    delimiter=self.delimiter,
+                                    quotechar=self.quotechar,
+                                    quoting=csv.QUOTE_ALL)
+            writer.writerows(rows)
