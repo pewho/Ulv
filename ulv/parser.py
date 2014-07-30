@@ -35,11 +35,12 @@ class Exporter:
         self.quotechar = quotechar
         self.delimiter = delimiter
         self.encoding = encoding
+        self.quoteStrategy = csv.QUOTE_ALL if self.quotechar != '' else csv.QUOTE_NONE
         with open(self.filename, 'w') as fwrite:
             writer = csv.DictWriter(fwrite, self.header,
                                     delimiter=self.delimiter,
                                     quotechar=self.quotechar,
-                                    quoting=csv.QUOTE_ALL)
+                                    quoting=self.quoteStrategy)
             writer.writeheader()
 
     def write_row(self, row):
@@ -48,7 +49,7 @@ class Exporter:
                                     self.header,
                                     delimiter=self.delimiter,
                                     quotechar=self.quotechar,
-                                    quoting=csv.QUOTE_ALL)
+                                    quoting=self.quoteStrategy)
             writer.writerow(row)
 
     def write_rows(self, rows):
@@ -57,5 +58,5 @@ class Exporter:
                                     self.header,
                                     delimiter=self.delimiter,
                                     quotechar=self.quotechar,
-                                    quoting=csv.QUOTE_ALL)
+                                    quoting=self.quoteStrategy)
             writer.writerows(rows)
