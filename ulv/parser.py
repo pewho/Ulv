@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
+# -*- encoding:utf8 -*-
 """
     Parser Module
     =============
@@ -60,21 +60,3 @@ class Exporter:
                                     quotechar=self.quotechar,
                                     quoting=self.quoteStrategy)
             writer.writerows(rows)
-
-class BufferedImporter:
-    def __init__(self, filename, delimiter=',', quotechar='"', encoding='utf-8'):
-        self.filename = filename
-        self.quotechar = quotechar
-        self.delimiter = delimiter
-        self.encoding = encoding
-        self.header = None
-
-    def build_generator(self):
-        with open(self.filename, 'r', encoding=self.encoding) as f:
-            reader = csv.DictReader(f, delimiter=self.delimiter, quotechar=self.quotechar)
-            self.header = reader.fieldnames
-            for row in reader:
-                yield row
-
-    def get_header(self):
-        return self.header
