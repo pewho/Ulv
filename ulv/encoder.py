@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#-*- encoding:utf8 -*-
+# -*- encoding:utf8 -*-
 """
     Encoder Class
     =============
@@ -37,7 +37,8 @@ class Encoder:
         """
             Encode from unicode to a byteString.
 
-            This convert an unicode string to bytes string, or recursively unicode string on iterable / dict
+            This convert an unicode string to bytes string,
+            or recursively unicode string on iterable / dict
             to the selected encoding. Other type is conserved.
 
             :param data: the string to convert, or an iterable, or a dict
@@ -55,7 +56,8 @@ class Encoder:
         """
         Decode from a byteString to unicode.
 
-        This convert a byte string to unicode, or recursively bytes string on iterable / dict
+        This convert a byte string to unicode,
+        or recursively bytes string on iterable / dict
         from the selected encoding. Other type is conserved.
 
         :param data: the string to convert, or an iterable, or a dict
