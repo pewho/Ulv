@@ -11,6 +11,8 @@ from sys import maxsize
 
 csv.field_size_limit(maxsize)
 
+__all__ = ['Exporter','Importer']
+
 class Importer:
     """
         Importeur de CSV.
