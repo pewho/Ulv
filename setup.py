@@ -20,7 +20,7 @@ setup(
         "License :: OSI Approved",
         "Natural Language :: French",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3.3",
+        "Programming Language :: Python :: 3",
         "Topic :: Parser",
     ],
     license="MIT"
