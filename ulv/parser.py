@@ -7,7 +7,9 @@
     or to write them on file.
 """
 import csv
+from sys import maxsize
 
+csv.field_size_limit(maxsize)
 
 class Importer:
     """
@@ -81,7 +83,8 @@ class Exporter:
             writer = csv.DictWriter(fwrite, self.header,
                                     delimiter=self.delimiter,
                                     quotechar=self.quotechar,
-                                    quoting=csv.QUOTE_ALL)
+                                    quoting=csv.QUOTE_ALL,
+                                    lineterminator='\n')
             writer.writeheader()
 
     def write_row(self, row):
